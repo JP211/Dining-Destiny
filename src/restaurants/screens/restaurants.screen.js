@@ -2,13 +2,15 @@ import React from "react";
 import { SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
 import { Searchbar } from "react-native-paper";
 
+import { RestaurantInfo } from "../components/restaurant-info.component";
+
 export const RestaurantsScreen = () => (
   <SafeAreaView style={styles.container}>
     <View style={styles.search}>
       <Searchbar placeholder="Search" />
     </View>
     <View style={styles.list}>
-      <Text>list</Text>
+      <RestaurantInfo />
     </View>
   </SafeAreaView>
 );
@@ -20,11 +22,10 @@ const styles = StyleSheet.create({
   },
   search: {
     padding: 16,
-    backgroundColor: "green",
   },
   list: {
     flex: 1,
     padding: 16,
-    backgroundColor: "blue",
+    backgroundColor: "gray",
   },
 });
