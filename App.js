@@ -1,11 +1,13 @@
 import React from "react";
-import { SafeAreaView, View, Text } from "react-native";
+import { Text } from "react-native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 
 import { SafeArea } from "./src/components/utility/safe-area.component";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+import { Ionicons } from "@expo/vector-icons";
 
 import {
   useFonts as useOswald,
@@ -17,6 +19,21 @@ import { theme } from "./src/infrastructure/theme";
 import { RestaurantsScreen } from "./src/restaurants/screens/restaurants.screen";
 
 const Tab = createBottomTabNavigator();
+
+const TAB_ICON = {
+  Restaurants: "md-fast-food-outline",
+  Map: "md-map-outline",
+  Settings: "md-settings-outline",
+};
+
+const createScreenOptions = ({ route }) => {
+  const iconName = TAB_ICON[route.name];
+  return {
+    tabBarIcon: ({ size, color }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
+  };
+};
 
 const Settings = () => (
   <SafeArea>
@@ -46,7 +63,13 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <Tab.Navigator>
+          <Tab.Navigator
+            screenOptions={createScreenOptions}
+            tabBarOptions={{
+              activeTintColor: "tomato",
+              inactiveTintColor: "gray",
+            }}
+          >
             <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
             <Tab.Screen name="Map" component={Map} />
             <Tab.Screen name="Settings" component={Settings} />
