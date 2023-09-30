@@ -1,7 +1,11 @@
 import React from "react";
-import { StyleSheet, SafeAreaView } from "react-native";
+import { SafeAreaView, View, Text } from "react-native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
+
+import { SafeArea } from "./src/components/utility/safe-area.component";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import {
   useFonts as useOswald,
@@ -11,6 +15,20 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
 import { theme } from "./src/infrastructure/theme";
 import { RestaurantsScreen } from "./src/restaurants/screens/restaurants.screen";
+
+const Tab = createBottomTabNavigator();
+
+const Settings = () => (
+  <SafeArea>
+    <Text>Settings</Text>
+  </SafeArea>
+);
+
+const Map = () => (
+  <SafeArea>
+    <Text>Map</Text>
+  </SafeArea>
+);
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -23,20 +41,19 @@ export default function App() {
   if (!oswaldLoaded || !latoLoaded) {
     return null;
   }
+
   return (
     <>
-      <SafeAreaView style={styles.container}>
-        <ThemeProvider theme={theme}>
-          <RestaurantsScreen />
-          <ExpoStatusBar style="auto" />
-        </ThemeProvider>
-      </SafeAreaView>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <Tab.Navigator>
+            <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+            <Tab.Screen name="Map" component={Map} />
+            <Tab.Screen name="Settings" component={Settings} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
+      <ExpoStatusBar style="auto" />
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
