@@ -10,8 +10,6 @@ import { RestaurantInfoCard } from "../components/restaurant-info-card.component
 import { RestaurantsContext } from "../../services/restaurants/mock/restaurants.context";
 import { Spacer } from "../../components/spacer/spacer.component";
 
-
-
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 16,
@@ -36,7 +34,7 @@ export const RestaurantsScreen = () => {
           <Loading size={50} animating={true} color={MD2Colors.deepOrange400} />
         </LoadingContainer>
       )}
-        <Search />
+      <Search />
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
