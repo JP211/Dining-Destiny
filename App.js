@@ -2,12 +2,13 @@ import React from "react";
 import { Text } from "react-native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
+import { Ionicons } from "@expo/vector-icons";
 
 import { SafeArea } from "./src/components/utility/safe-area.component";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
 import { RestaurantsContextProvider } from "./src/services/restaurants/mock/restaurants.context";
-import { Ionicons } from "@expo/vector-icons";
 import { LocationContextProvider } from "./src/services/location/location.context";
 
 import {
