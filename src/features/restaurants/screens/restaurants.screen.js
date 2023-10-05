@@ -5,10 +5,10 @@ import styled from "styled-components/native";
 
 import { Search } from "../components/search.component";
 
-import { SafeArea } from "../../components/utility/safe-area.component";
+import { SafeArea } from "../../../components/utility/safe-area.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
-import { RestaurantsContext } from "../../services/restaurants/mock/restaurants.context";
-import { Spacer } from "../../components/spacer/spacer.component";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { Spacer } from "../../../components/spacer/spacer.component";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
