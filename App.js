@@ -11,7 +11,7 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { theme } from "./src/infrastructure/theme";
 import { Navigation } from "./src/infrastructure/navigation";
 
-import { RestaurantsContextProvider } from "./src/services/mock/restaurants/restaurants.context";
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 
 export default function App() {
