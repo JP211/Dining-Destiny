@@ -1,5 +1,5 @@
-import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import React from "react";
 import { ThemeProvider } from "styled-components/native";
 
 import {
@@ -11,7 +11,7 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { theme } from "./src/infrastructure/theme";
 import { Navigation } from "./src/infrastructure/navigation";
 
-import { RestaurantsContextProvider } from "./src/services/restaurants/mock/restaurants.context";
+import { RestaurantsContextProvider } from "./src/services/mock/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 
 export default function App() {
