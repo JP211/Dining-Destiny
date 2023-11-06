@@ -46,9 +46,8 @@ export default function App() {
 
   useEffect(() => {
     setTimeout(() => {
-      signInWithEmailAndPassword(auth, "<email>", "<password>")
+      signInWithEmailAndPassword(auth, "test@testmail.com", "1234Test")
         .then((user) => {
-          console.log(user);
           setIsAuthenticated(true);
         })
         .catch((e) => {
@@ -68,6 +67,8 @@ export default function App() {
   if (!oswaldLoaded || !latoLoaded) {
     return null;
   }
+
+  if (!isAuthenticated) return null;
 
   return (
     <>
