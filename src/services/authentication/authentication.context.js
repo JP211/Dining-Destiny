@@ -1,6 +1,5 @@
 import React, { useState, createContext } from "react";
-import "firebase/compat/auth";
-import firebase from "firebase/compat/app";
+import * as firebase from "firebase";
 
 import { loginRequest } from "./authentication.service";
 
