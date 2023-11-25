@@ -17,6 +17,12 @@ import { LocationContextProvider } from "./src/services/location/location.contex
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import { AuthenticationContext } from "./src/services/authentication/authentication.context";
 
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+
 const firebaseConfig = {
   apiKey: "AIzaSyD8ZeDG4h6eOduizaACt2csXV8lCZ-g7po",
   authDomain: "diningdestiny-efda1.firebaseapp.com",
@@ -26,24 +32,36 @@ const firebaseConfig = {
   appId: "1:361530597499:web:bf3fcc885f9b373fe802de",
 };
 
-initializeApp(firebaseConfig);
-
-// if (!firebase.apps.length) {
-//   firebase.initializeApp(firebaseConfig);
-// }
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 export default function App() {
-  const [oswaldLoaded] = useOswald({
-    Oswald_400Regular,
-  });
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const [latoLoaded] = useLato({
-    Lato_400Regular,
-  });
+  useEffect(() => {
+    setTimeout(() => {
+      signInWithEmailAndPassword(auth, "test@gomail.com", "1234GO")
+        .then((user) => {
+          console.log(user);
+          setIsAuthenticated(true);
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    }, 5000);
+  }, []);
 
-  if (!oswaldLoaded || !latoLoaded) {
-    return null;
-  }
+  // const [oswaldLoaded] = useOswald({
+  //   Oswald_400Regular,
+  // });
+
+  // const [latoLoaded] = useLato({
+  //   Lato_400Regular,
+  // });
+
+  // if (!oswaldLoaded || !latoLoaded) {
+  //   return null;
+  // }
 
   return (
     <>
