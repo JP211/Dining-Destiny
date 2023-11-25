@@ -51,17 +51,17 @@ export default function App() {
     }, 5000);
   }, []);
 
-  // const [oswaldLoaded] = useOswald({
-  //   Oswald_400Regular,
-  // });
+  const [oswaldLoaded] = useOswald({
+    Oswald_400Regular,
+  });
 
-  // const [latoLoaded] = useLato({
-  //   Lato_400Regular,
-  // });
+  const [latoLoaded] = useLato({
+    Lato_400Regular,
+  });
 
-  // if (!oswaldLoaded || !latoLoaded) {
-  //   return null;
-  // }
+  if (!oswaldLoaded || !latoLoaded) {
+    return null;
+  }
 
   return (
     <>
